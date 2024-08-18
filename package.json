@@ -1,0 +1,52 @@
+{
+  "name": "contact-form",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "This repo for just training in figma template challenge.",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run postcss:watch\" \"npm run sass:watch\"",
+    "postcss:watch": "postcss src/styles/*.css --dir public --use autoprefixer cssnano --watch",
+    "sass:watch": "sass --no-source-map ./src/scss/:src/styles/ --watch",
+    "server": "live-server --open=./index.html",
+    "upgrade": "ncu --upgrade",
+    "tags": "git push repo --tags",
+    "gen:lock": "npm i --package-lock-only"
+  },
+  "markdown": "github",
+  "license": "MIT",
+  "type": "module",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/license/mit/"
+    }
+  ],
+  "author": "Khaled Mohamed <k.mohamed.11.98@gmail.com> (https://github.com/krypton225)",
+  "contributors": [
+    "Khaled Mohamed"
+  ],
+  "bugs": {
+    "url": "https://github.com/krypton225/qr-code-component/issues"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "SCSS",
+    "JS"
+  ],
+  "repository": {
+    "url": "https://github.com/krypton225/fem-contact-form",
+    "type": "git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
+    "cssnano": "^7.0.5",
+    "live-server": "^1.2.2",
+    "npm-check-updates": "^17.0.6",
+    "postcss": "^8.4.41",
+    "postcss-cli": "^11.0.0",
+    "postcss-preset-env": "^10.0.2",
+    "sass": "^1.77.8"
+  }
+}
