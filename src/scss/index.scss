@@ -1,5 +1,199 @@
-@use "./base";
+@layer reset {
+    @import "../../node_modules/sass-pire/src/base/reset";
+}
+
+@import "../../node_modules/sass-pire/src/sass-pire";
+
+@import "./base";
+
+:root {
+    --green-200: hsl(148, 38%, 91%);
+    --green-600: hsl(169, 82%, 27%);
+    --green-900: hsl(169, 82%, 17%);
+    --red: hsl(0, 66%, 54%);
+    --white: hsl(0, 0%, 100%);
+    --gray-500: hsl(186, 15%, 59%);
+    --gray-900: hsl(187, 24%, 22%);
+}
 
 body {
     font-family: 'Karla', sans-serif;
+    background-color: var(--green-200);
+
+    display: grid;
+    place-items: center;
+}
+
+::selection {
+    color: var(--white);
+    background-color: var(--green-600);
+}
+
+.main {
+    padding: 0.8rem;
+}
+
+.form-input,
+.form-textarea {
+    --form-input-w: 100%;
+    --form-input-py: 0.35rem;
+    --form-input-px: 0.4rem;
+    --form-input-border-radius: 0.4rem;
+
+    inline-size: var(--form-input-w);
+    width: var(--form-input-w);
+
+    padding-block: var(--form-input-py);
+    padding-top: var(--form-input-py);
+    padding-bottom: var(--form-input-py);
+
+    padding-inline: var(--form-input-px);
+    padding-right: var(--form-input-px);
+    padding-left: var(--form-input-px);
+
+    border: 1px solid var(--gray-500);
+    border-radius: var(--form-input-border-radius);
+    outline: 1px solid transparent;
+
+    transition: all 0.33s ease-in-out;
+
+    &:focus-visible {
+        outline-color: var(--green-600);
+    }
+
+    @include mq-general(min, w, sm-tab) {
+        --form-input-py: 0.5rem;
+    }
+}
+
+.form-textarea {
+    resize: none;
+}
+
+.error-validation {
+    color: var(--red);
+    font-size: clamp(0.91rem, calc(1.2vw + 2px), 1.1rem);
+}
+
+.form-control {
+    --form-control-w: 100%;
+    --form-control-gap: 0.25rem;
+
+    inline-size: var(--form-control-w);
+    width: var(--form-control-w);
+
+    @include flex-fstart-fstart(col);
+    gap: var(--form-control-gap);
+
+    &.as-row {
+        @include flex-dir(row);
+        @include align-items(center);
+    }
+
+    .form-control-label {
+        --form-input-label-w: 100%;
+
+        inline-size: var(--form-input-label-w);
+        width: var(--form-input-label-w);
+
+        text-transform: capitalize;
+        font-size: clamp(0.91rem, calc(1.2vw + 2px), 1.1rem);
+
+        color: var(--gray-900);
+    }
+}
+
+.btn {
+    --btn-w: 100%;
+    --btn-py: 0.7rem;
+
+    inline-size: var(--btn-w);
+    width: var(--btn-w);
+
+    padding-block: var(--btn-py);
+    padding-top: var(--btn-py);
+    padding-bottom: var(--btn-py);
+
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+
+    color: var(--white);
+    background-color: var(--green-600);
+
+    text-transform: capitalize;
+
+    cursor: pointer;
+    
+    transition: all 0.33s ease-in-out;
+
+    &:hover {
+        background-color: var(--green-900);
+    }
+}
+
+.start {
+    color: var(--green-600);
+    font-weight: bold;
+}
+
+.contact-form {
+    --main-gap: 1rem;
+
+    min-width: 19rem;
+    padding-block: min(1rem, 3.5vw);
+    padding-inline: min(1rem, 3vw);
+
+    border-radius: 0.7rem;
+
+    background-color: var(--white);
+
+    @include mq-gen(min, w, sm-tab) {
+        min-width: 40rem;
+    }
+
+    .contact__title {
+        --contact-title-mb: 1rem;
+
+        margin-block-end: var(--contact-title-mb);
+        margin-bottom: var(--contact-title-mb);
+
+        color: var(--gray-900);
+        text-transform: capitalize;
+        font-size: clamp(1.8rem, calc(1.5vw + 7px), 2rem);
+    }
+
+    .contact__content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: calc(var(--main-gap) / 2);
+    }
+
+    .contact__name {
+        @include flex-center-center();
+        @include flex-wrap(yes);
+        gap: var(--main-gap);
+
+        @include mq-gen(min, w, sm-tab) {
+            @include flex-wrap(no);
+        }
+    }
+
+    .contact__footer {
+        --contact-footer-w: 100%;
+        --contact-footer-mt: 0.5rem;
+
+        inline-size: var(--contact-footer-w);
+        width: var(--contact-footer-w);
+
+        margin-block-start: var(--contact-footer-mt);
+        margin-top: var(--contact-footer-mt);
+
+        @include flex-fstart-fstart(col);
+        gap: calc(var(--main-gap) - 0.15rem);
+
+        .contact__submit {
+            width: 100%;
+        }
+    }
 }
